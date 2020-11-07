@@ -29,3 +29,8 @@
   command: kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: Copiar o admin.conf
+  shell: |
+        cp /etc/kubernetes/admin.conf /root/.kube/config
+
