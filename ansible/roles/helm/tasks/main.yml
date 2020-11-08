@@ -1,4 +1,4 @@
-- name: Download foo.conf
+- name: Download helm
   get_url:
     url:  https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz
     dest: /root/helm.tar.gz
@@ -6,10 +6,14 @@
 - name: Extract tar.zg
   unarchive:
     src: /root/helm.tar.gz
-    dest: /usr/bin/helm    
+    dest: /root/
+    remote_src: yes  
 
-- name: Change permission file
-  file:
-    path: /usr/bin/helm
+
+- name: Copy helm to /usr/bin
+  copy:
+    src: /root/linux-amd64/helm
+    dest: /usr/bin/helm
     mode: '0700'
+    remote_src: yes
 
