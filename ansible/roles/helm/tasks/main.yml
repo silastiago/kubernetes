@@ -1,0 +1,15 @@
+- name: Download foo.conf
+  get_url:
+    url:  https://get.helm.sh/v3.2.2-linux-amd64.tar.gz
+    dest:  helm.tar.gz
+
+- name: Extract tar.zg
+  unarchive:
+    src: helm.tar.gz
+    dest: /usr/bin/helm    
+
+- name: Change permission file
+  file:
+    path: /usr/bin/helm
+    mode: '0700'
+
