@@ -1,6 +1,11 @@
 
+
 POD1=$(kubectl get pod | grep nginx | awk -F" " '{print $1}' | head -1)
+POD2=$(kubectl get pod | grep nginx | awk -F" " '{print $1}' | head -2 | tail -1)
+
+
 POD2=$(kubectl get pod | grep nginx | awk -F" " '{print $1}' | tail -1)
+
 
 
 echo 'POD 1' > index.html
@@ -8,3 +13,13 @@ kubectl cp index.html $POD1:/usr/share/nginx/html/
 
 echo 'POD 2' > index.html
 kubectl cp index.html $POD2:/usr/share/nginx/html/
+
+echo 'POD 3' > index.html
+kubectl cp index.html $POD3:/usr/share/nginx/html/
+
+echo 'POD 4' > index.html
+kubectl cp index.html $POD4:/usr/share/nginx/html/
+
+
+echo 'POD 5' > index.html
+kubectl cp index.html $POD5:/usr/share/nginx/html/
